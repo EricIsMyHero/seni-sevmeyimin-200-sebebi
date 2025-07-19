@@ -22,6 +22,25 @@
       z-index: 2;
       position: relative;
     }
+ .share-button {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .share-button button {
+      padding: 10px 20px;
+      background-color: #c2185b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .share-button button:hover {
+      background-color: #a01048;
+    }
 
     ol {
       counter-reset: number;
@@ -49,6 +68,9 @@
   </style>
 </head>
 <body>
+    <div class="share-button">
+    <button onclick="shareSite()">💌 Saytı paylaş</button>
+    </div>
   <h1>Səni Sevməyimin 200 Səbəbi 💖</h1>
   <ol>
     <li>Gülüşün</li>
@@ -254,6 +276,22 @@
   </ol>
 
 <script>
+    function shareSite() {
+      const shareData = {
+        title: "Səni Sevməyimin 200 Səbəbi 💖",
+        text: "Bax bu sənə həsr olunub 🥺💘",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData)
+          .then(() => console.log("Paylaşıldı"))
+          .catch((err) => console.log("Xəta:", err));
+      } else {
+        prompt("Linki kopyala və paylaş ✨", window.location.href);
+      }
+    }
+  
     const emojis = ["🌸", "🎀", "🩷", "😻", "💝", "💖"];
     for (let i = 0; i < 100; i++) {
       const emoji = document.createElement("div");

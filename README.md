@@ -1,2 +1,2 @@
 # seni-sevmeyimin-200-sebebi
-Sadəcə bil istədim
+Nə yəni sadəcə 200 səbəb?

@@ -4,6 +4,38 @@
   <meta charset="UTF-8">
   <title>Səni Sevməyimin 200 Səbəbi</title>
   <style>
+.emoji {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.2;
+  animation: float 20s linear infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+<script>
+  const emojis = ["🌸", "🎀", "🩷", "😻", "💝", "💖"];
+  for (let i = 0; i < 60; i++) {
+    const emoji = document.createElement("div");
+    emoji.className = "emoji";
+    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.style.top = Math.random() * 100 + "vh";
+    emoji.style.fontSize = (Math.random() * 20 + 20) + "px";
+    emoji.style.animationDuration = (Math.random() * 15 + 10) + "s";
+    document.body.appendChild(emoji);
+  }
+</script>
     body {
   background: linear-gradient(to bottom, #ffffff, #ffe6ec);
   font-family: 'Segoe UI', sans-serif;

@@ -5,66 +5,28 @@
   <title>Səni Sevməyimin 200 Səbəbi</title>
   <style>
     body {
-      margin: 0;
-      padding: 30px;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #ffe6ec);
-      max-width: 800px;
-      margin: auto;
-      color: #444;
-      position: relative;
-      overflow: hidden;
+  background: linear-gradient(to bottom, #ffffff, #ffe6ec);
+  font-family: 'Segoe UI', sans-serif;
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  color: #444;
+}
     }
-
     h1 {
       text-align: center;
       color: #c2185b;
       margin-bottom: 40px;
     }
-
     ol {
       counter-reset: number;
       padding-left: 20px;
-      position: relative;
-      z-index: 1;
     }
-
     li {
       margin-bottom: 10px;
       font-size: 17px;
       line-height: 1.5;
       position: relative;
-      padding-left: 30px;
-    }
-
-    li::before {
-      counter-increment: number;
-      content: counter(number) ". ";
-      color: #c2185b;
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
-
-    /* Emoji background */
-    .emoji {
-      position: absolute;
-      font-size: 24px;
-      opacity: 0.2;
-      animation: float 20s linear infinite;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 0.1;
-      }
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0.3;
-      }
     }
   </style>
 </head>

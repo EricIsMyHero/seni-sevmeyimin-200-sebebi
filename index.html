@@ -49,28 +49,6 @@
   </style>
 </head>
 <body>
-  <div style="text-align: center; margin-bottom: 30px;">
-  <button onclick="shareSite()" style="padding: 10px 20px; background-color: #c2185b; color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer;">
-    💌 Saytı paylaş
-  </button>
-</div>
-  <script>
-  function shareSite() {
-    const shareData = {
-      title: "Səni Sevməyimin 200 Səbəbi 💖",
-      text: "Bax bu çox gözəldir, sənə həsr olunub 💝",
-      url: window.location.href
-    };
-
-    if (navigator.share) {
-      navigator.share(shareData)
-        .then(() => console.log("Paylaşıldı"))
-        .catch((error) => console.log("Xəta:", error));
-    } else {
-      prompt("Linki kopyala və paylaş 💌", window.location.href);
-    }
-  }
-  </script>
   <h1>Səni Sevməyimin 200 Səbəbi 💖</h1>
   <ol>
     <li>Gülüşün</li>
@@ -255,7 +233,7 @@
     <li>Məni nə qədər önəmsədiyin</li>
     <li>Həyata olan tutqunluğun</li>
     <li>İçindəki gözəllik</li>
-    <li>Bənzərsiz olmağın</li>
+    <li>Saf sevgin</li>
     <li>Mənə qatdığın gözəlliklərin</li>
     <li>Dərin mənalı baxışların</li>
     <li>İlham dolu sözlərin</li>

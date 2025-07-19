@@ -54,25 +54,23 @@
     💌 Saytı paylaş
   </button>
 </div>
-
-<script>
+  <script>
   function shareSite() {
     const shareData = {
       title: "Səni Sevməyimin 200 Səbəbi 💖",
-      text: "Bu vebsayta bax: Səni Sevməyimin 200 Səbəbi 💝",
+      text: "Bax bu çox gözəldir, sənə həsr olunub 💝",
       url: window.location.href
     };
 
     if (navigator.share) {
       navigator.share(shareData)
-        .then(() => console.log('Paylaşıldı!'))
-        .catch(console.error);
+        .then(() => console.log("Paylaşıldı"))
+        .catch((error) => console.log("Xəta:", error));
     } else {
-      // Əgər "navigator.share" dəstəklənmirsə (məsələn, desktopda)
       prompt("Linki kopyala və paylaş 💌", window.location.href);
     }
   }
-</script>
+  </script>
   <h1>Səni Sevməyimin 200 Səbəbi 💖</h1>
   <ol>
     <li>Gülüşün</li>

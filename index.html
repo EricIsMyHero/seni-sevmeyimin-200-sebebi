@@ -11,22 +11,47 @@
   max-width: 800px;
   margin: auto;
   color: #444;
-}
+  position: relative;
+      z-index: 1;
     }
+
     h1 {
       text-align: center;
       color: #c2185b;
       margin-bottom: 40px;
+      z-index: 2;
+      position: relative;
     }
+
     ol {
       counter-reset: number;
       padding-left: 20px;
+      position: relative;
+      z-index: 2;
     }
+
     li {
       margin-bottom: 10px;
       font-size: 17px;
       line-height: 1.5;
       position: relative;
+    }
+
+    li::before {
+      counter-increment: number;
+      content: counter(number) ". ";
+      color: #c2185b;
+      font-weight: bold;
+      position: absolute;
+      left: -2em;
+    }
+
+    .emoji {
+      position: fixed;
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.08;
     }
   </style>
 </head>

@@ -1,0 +1,77 @@
+body {
+  background: linear-gradient(to bottom, #ffffff, #ffe6ec);
+  font-family: 'Segoe UI', sans-serif;
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  color: #444;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  color: #c2185b;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.share-button {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.share-button button {
+  padding: 10px 20px;
+  background-color: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.share-button button:hover {
+  background-color: #a01048;
+}
+
+ol {
+  counter-reset: number;
+  padding-left: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+li {
+  margin-bottom: 10px;
+  font-size: 17px;
+  line-height: 1.5;
+  position: relative;
+}
+
+footer {
+  margin-top: 80px;
+  padding: 20px;
+  background-color: #fff0f5;
+  color: #000;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+}
+
+footer a {
+  color: #f48fb1;
+}
+
+.emoji {
+  position: fixed;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.2;
+}

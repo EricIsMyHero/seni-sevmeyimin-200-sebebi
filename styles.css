@@ -23,12 +23,12 @@ h1 {
 }
 
 .share-button button {
-  padding: 20px 40px;
+  padding: 30px 60px;
   background-color: #c2185b;
   color: white;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 24px;
   cursor: pointer;
   transition: 0.3s;
   position: relative;

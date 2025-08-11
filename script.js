@@ -5,11 +5,11 @@ function shareSite() {
     url: window.location.href
   };
 function searchReasons() {
-  let input = document.getElementById("searchInput").value.toLowerCase();
+  let input = document.getElementById("searchInput").value.toLowerCase().trim();
   let reasons = document.querySelectorAll("#reasonList li");
-  
+
   reasons.forEach(reason => {
-    if (reason.textContent.toLowerCase().includes(input)) {
+    if (reason.textContent.toLowerCase().includes(input) || input === "") {
       reason.style.display = "list-item"; // göstər
     } else {
       reason.style.display = "none"; // gizlət

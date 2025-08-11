@@ -4,7 +4,18 @@ function shareSite() {
     text: "Bax bu sənə həsr olunub 🥺💘",
     url: window.location.href
   };
-
+function searchReasons() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let reasons = document.querySelectorAll("#reasonList li");
+      
+      reasons.forEach(reason => {
+        if (reason.textContent.toLowerCase().includes(input)) {
+          reason.style.display = "";
+        } else {
+          reason.style.display = "none";
+        }
+      });
+}
   if (navigator.share) {
     navigator.share(shareData)
       .then(() => console.log("Paylaşıldı"))

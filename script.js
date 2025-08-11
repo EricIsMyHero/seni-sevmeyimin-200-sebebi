@@ -4,24 +4,7 @@ function shareSite() {
     text: "Bax bu sənə həsr olunub 🥺💘",
     url: window.location.href
   };
-window.onload = function() {
-  document.getElementById("searchInput").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") searchReasons();
-  });
-};
 
-function searchReasons() {
-  let input = document.getElementById("searchInput").value.toLowerCase().trim();
-  let reasons = document.querySelectorAll("#reasonList li");
-
-  reasons.forEach(reason => {
-    if (input === "" || reason.textContent.toLowerCase().includes(input)) {
-      reason.style.display = ""; // normal görünüş
-    } else {
-      reason.style.display = "none"; // gizlət
-    }
-  });
-}
   if (navigator.share) {
     navigator.share(shareData)
       .then(() => console.log("Paylaşıldı"))

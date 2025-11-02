@@ -8,7 +8,10 @@
 <body>
 
   <h1>Səni Sevməyimin 200 Səbəbi 💖</h1>
-<ol>
+<div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterReasons()" placeholder="Səbəbləri axtar...">
+    </div>
+    <ol id="reasons-list">
     <li>Gülüşün</li>
     <li>Gözlərin</li>
     <li>Dodaqların</li>
@@ -210,9 +213,11 @@
     <li>Dərin hisslərin</li>
     <li>Sən! </li>
   </ol>
-<div class="share-button">
-    <button onclick="shareSite()">💌 Saytı paylaş</button>
-</div>
+<div class="share-buttons-container">
+        <button onclick="shareSite()">💌 Saytı Paylaş</button>
+        <button class="whatsapp-share" onclick="shareWhatsApp()">💬 WhatsApp</button>
+        <button class="twitter-share" onclick="shareTwitter()">🐦 Twitter</button>
+    </div>
   <script src="script.js"></script>
 
   <footer>

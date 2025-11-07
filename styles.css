@@ -110,18 +110,19 @@ li.hidden {
 /* Axtarış stili BİTİR */
 
 footer {
-  margin-top: 80px;
-  padding: 20px;
-  background-color: #fff0f5;
-  color: #000;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background-color: #111;
+    color: #ccc;
+    text-align: center;
+    font-size: 14px;
+    z-index: 100;
 }
-
 footer a {
-  color: #f48fb1;
+    color: #f48fb1; 
 }
 
 .emoji {

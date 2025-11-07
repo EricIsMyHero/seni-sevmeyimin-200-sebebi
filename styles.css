@@ -1,26 +1,34 @@
+/* Başlanğıc: Yeni şrift daxil edin */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
     background: linear-gradient(to bottom, #ffffff, #ffe6ec);
     font-family: 'Roboto', sans-serif; 
     padding: 30px;
+    /* Footer fixed olduğu üçün aşağıdan boşluq əlavə edin */
+    padding-bottom: 80px; 
     max-width: 800px;
     margin: auto;
     color: #444;
     position: relative;
-    z-index: 1;
+    /* Əsas məzmunu emojilərdən yuxarıda saxlayın */
+    z-index: 10; 
 }
 
 h1 {
-  text-align: center;
-  color: #c2185b;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 2;
+    text-align: center;
+    color: #c2185b;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
 }
 
 /* YENİ: Axtarış Çubuğu Stili */
 .search-container {
     text-align: center;
     margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
 }
 
 #searchInput {
@@ -46,9 +54,11 @@ h1 {
     margin-top: 40px;
     margin-bottom: 30px;
     display: flex;
-    flex-wrap: wrap; /* Kiçik ekranlar üçün */
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 15px;
+    position: relative;
+    z-index: 10;
 }
 
 .share-buttons-container button {
@@ -88,11 +98,13 @@ h1 {
     background-color: #0C7ABF;
 }
 /* Əlavə Paylaşma Düymələri Stili BİTİR */
+
+/* List Stili */
 ol {
-  counter-reset: number;
-  padding-left: 20px;
-  position: relative;
-  z-index: 2;
+    counter-reset: number;
+    padding-left: 20px;
+    position: relative;
+    z-index: 10;
 }
 
 li {
@@ -100,7 +112,7 @@ li {
     font-size: 17px;
     line-height: 1.5;
     position: relative;
-    transition: all 0.3s ease; /* Axtarış üçün animasıya */
+    transition: all 0.3s ease; 
 }
 
 /* YENİ: Axtarış nəticəsində gizlədilən elementlər üçün stil */
@@ -109,26 +121,52 @@ li.hidden {
 }
 /* Axtarış stili BİTİR */
 
+/* --- FOOTER DÜZƏLİŞİ (FIXED VƏ ŞƏFFAF) --- */
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 20px 10px;
-    background-color: #111;
-    color: #ccc;
+    padding: 15px 10px; /* Padding-i azaldın */
+    /* Şəffaf fon rəngi */
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: #555;
     text-align: center;
     font-size: 14px;
-    z-index: 100;
+    /* Ən yuxarıda görünməlidir */
+    z-index: 999; 
+    border-top: 1px solid #f0e0e6;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); /* Yüngül kölgə */
 }
 footer a {
-    color: #f48fb1; 
+    color: #c2185b; /* Daha tünd rəng */
+    text-decoration: none;
+    transition: color 0.2s;
 }
+footer a:hover {
+    color: #a01048;
+}
+/* --- FOOTER DÜZƏLİŞİ BİTİR --- */
 
 .emoji {
-  position: fixed;
-  z-index: 0;
-  user-select: none;
-  pointer-events: none;
-  opacity: 0.2;
+    position: fixed;
+    z-index: 0; /* Ən arxada saxlayın */
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+/* Kiçik ekranlar üçün düzəlişlər */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+        padding-bottom: 80px;
+    }
+    .share-buttons-container button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    footer {
+        padding: 10px;
+    }
 }

@@ -1,230 +1,470 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8" />
-  <title>Səni Sevməyimin 200 Səbəbi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Səni Sevməyimin 200 Səbəbi 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --rose:#c2185b;--rose-light:#f8bbd0;--rose-dark:#880e4f;
+  --cream:#fff9f5;--text:#2d1a22;--muted:#9e7b8a;
+  --card-bg:rgba(255,255,255,0.92);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── INTRO ── */
+#intro{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#1a0a11 0%,#3d1530 40%,#6b2447 70%,#c2185b 100%);
+  transition:opacity .8s ease,transform .8s ease;
+}
+#intro.hide{opacity:0;transform:scale(1.05);pointer-events:none}
+.intro-blur{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 40%,rgba(255,100,150,0.25) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 70%,rgba(200,50,100,0.2) 0%,transparent 50%);
+  animation:bgPulse 6s ease-in-out infinite alternate;
+}
+@keyframes bgPulse{from{opacity:.7}to{opacity:1}}
+.floating-heart{
+  position:absolute;font-size:1.5rem;opacity:0.12;animation:floatUp 8s ease-in-out infinite;
+  pointer-events:none;user-select:none;
+}
+@keyframes floatUp{
+  0%{transform:translateY(100vh) rotate(-10deg);opacity:0}
+  10%{opacity:.12}
+  90%{opacity:.12}
+  100%{transform:translateY(-100px) rotate(10deg);opacity:0}
+}
+.intro-content{position:relative;z-index:2;text-align:center;padding:2rem}
+.intro-subtitle{
+  font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:300;letter-spacing:.35em;
+  color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:1.5rem;
+}
+.intro-title{
+  font-family:'Playfair Display',serif;font-size:clamp(2.2rem,7vw,4.5rem);font-weight:900;
+  color:#fff;line-height:1.1;margin-bottom:.5rem;
+}
+.intro-title span{color:#f8bbd0}
+.intro-tagline{
+  font-size:1rem;color:rgba(255,255,255,0.55);font-weight:300;
+  margin-bottom:3rem;letter-spacing:.05em;
+}
+.btn-start{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:1rem 2.5rem;border:2px solid rgba(255,255,255,0.6);border-radius:50px;
+  background:transparent;color:#fff;font-family:'DM Sans',sans-serif;
+  font-size:1rem;font-weight:500;letter-spacing:.05em;cursor:pointer;
+  transition:all .3s ease;position:relative;overflow:hidden;
+}
+.btn-start::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,0.1);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.btn-start:hover::before{transform:scaleX(1)}
+.btn-start:hover{border-color:#fff;transform:translateY(-2px);box-shadow:0 8px 30px rgba(194,24,91,.4)}
+.btn-start:active{transform:translateY(0)}
+
+/* ── MAIN ── */
+#main{display:none;min-height:100vh}
+#main.visible{display:block}
+
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,249,245,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(194,24,91,.1);padding:1rem 1.5rem;
+}
+.header-inner{max-width:880px;margin:auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.site-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--rose);font-weight:700}
+.progress-wrap{flex:1;min-width:180px}
+.progress-label{font-size:.72rem;color:var(--muted);margin-bottom:.3rem}
+.progress-bar{height:4px;background:var(--rose-light);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),#e91e8c);border-radius:2px;transition:width .5s ease;width:0%}
+.counter{font-size:.78rem;font-weight:500;color:var(--rose);white-space:nowrap}
+
+/* controls */
+.controls{max-width:880px;margin:1.5rem auto;padding:0 1.5rem;display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+#searchInput{
+  flex:1;min-width:180px;padding:.65rem 1.1rem;
+  border:1.5px solid var(--rose-light);border-radius:25px;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;
+  background:#fff;color:var(--text);transition:.25s;
+}
+#searchInput:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(194,24,91,.1)}
+.ctrl-btn{
+  padding:.65rem 1.2rem;border:1.5px solid var(--rose-light);border-radius:25px;
+  background:#fff;color:var(--rose);font-family:'DM Sans',sans-serif;font-size:.85rem;
+  font-weight:500;cursor:pointer;transition:.25s;white-space:nowrap;
+}
+.ctrl-btn:hover{background:var(--rose);color:#fff;border-color:var(--rose);transform:translateY(-1px);box-shadow:0 4px 15px rgba(194,24,91,.25)}
+.ctrl-btn:active{transform:translateY(0)}
+.ctrl-btn.music-on{background:var(--rose);color:#fff;border-color:var(--rose)}
+
+/* grid */
+.grid{
+  max-width:880px;margin:0 auto;padding:0 1.5rem 6rem;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;
+}
+
+/* card */
+.reason-card{
+  background:var(--card-bg);border:1px solid rgba(194,24,91,.12);
+  border-radius:16px;padding:1.2rem;cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(20px);
+}
+.reason-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease,box-shadow .25s ease,border-color .25s ease}
+.reason-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0) 0%,rgba(255,100,150,.04) 100%);
+  opacity:0;transition:opacity .25s;
+}
+.reason-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(194,24,91,.15);
+  border-color:rgba(194,24,91,.3);
+}
+.reason-card:hover::before{opacity:1}
+.card-num{
+  font-size:.72rem;font-weight:500;letter-spacing:.08em;color:var(--rose-light);
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.card-text{font-size:.9rem;line-height:1.55;color:var(--text);font-weight:400}
+.card-icon{position:absolute;bottom:.7rem;right:.8rem;font-size:1rem;opacity:.3}
+
+/* last card special */
+.reason-card.last-card{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,#1a0a11,#6b2447);
+  border:none;
+  padding:2.5rem;text-align:center;
+}
+.reason-card.last-card .card-num{color:rgba(255,255,255,.4)}
+.reason-card.last-card .card-text{
+  font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;
+  line-height:1.3;font-weight:700;
+}
+.reason-card.last-card .card-icon{display:none}
+.ending-note{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;font-style:italic}
+
+/* modal */
+#modal{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(20,5,15,.7);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+#modal.open{display:flex}
+.modal-box{
+  background:#fff;border-radius:24px;max-width:480px;width:100%;
+  padding:2.5rem;position:relative;
+  animation:modalIn .3s cubic-bezier(.34,1.56,.64,1);
+  text-align:center;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.modal-heart{font-size:2.5rem;margin-bottom:1rem}
+.modal-num{font-size:.75rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:.5rem}
+.modal-text{font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.45;color:var(--text);margin-bottom:1.5rem}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--rose-light);border:none;border-radius:50%;
+  width:32px;height:32px;font-size:1rem;cursor:pointer;color:var(--rose);
+  display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.modal-close:hover{background:var(--rose);color:#fff}
+.modal-share{
+  display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;
+}
+.modal-share button{
+  padding:.5rem 1rem;border:1.5px solid var(--rose-light);border-radius:20px;
+  background:#fff;color:var(--rose);font-size:.8rem;font-weight:500;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:.2s;
+}
+.modal-share button:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+
+/* no button */
+.btn-no-wrap{position:relative;display:inline-block;margin-left:.5rem}
+#noBtn{
+  padding:.65rem 1.2rem;border:1.5px dashed #e91e8c55;border-radius:25px;
+  background:#fff;color:var(--muted);font-family:'DM Sans',sans-serif;
+  font-size:.85rem;cursor:pointer;transition:border-color .2s;
+  position:relative;
+}
+#noBtn:hover{border-color:var(--rose)}
+
+/* share bar */
+.share-bar{
+  max-width:880px;margin:0 auto;padding:.5rem 1.5rem 2rem;
+  display:flex;gap:.7rem;flex-wrap:wrap;
+}
+
+/* fun section */
+.fun-section{
+  max-width:880px;margin:0 auto 1rem;padding:0 1.5rem;
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;
+}
+.love-question{font-size:.9rem;color:var(--muted);font-weight:400}
+#yesBtn{
+  padding:.5rem 1.1rem;background:var(--rose);color:#fff;border:none;
+  border-radius:20px;font-family:'DM Sans',sans-serif;font-size:.85rem;
+  font-weight:500;cursor:pointer;transition:.2s;
+}
+#yesBtn:hover{background:var(--rose-dark);transform:scale(1.05)}
+
+/* floating bg gradient */
+.bg-gradient{
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:linear-gradient(180deg,#fff9f5 0%,#fce4ec 50%,#fff9f5 100%);
+  background-size:100% 300%;
+  animation:gradMove 12s ease-in-out infinite alternate;
+}
+@keyframes gradMove{from{background-position:50% 0%}to{background-position:50% 100%}}
+
+/* hidden search */
+.reason-card.search-hidden{display:none}
+
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr 1fr}
+  .intro-title{font-size:2rem}
+}
+</style>
 </head>
 <body>
 
-  <h1>Səni Sevməyimin 200 Səbəbi 💖</h1>
-<div class="search-container">
-        <input type="text" id="searchInput" onkeyup="filterReasons()" placeholder="Səbəbləri axtar...">
-    </div>
-    <ol id="reasons-list">
-    <li>Yumşaqlığın</li>
-    <li>Baxışların</li>
-    <li>Saçların</li>
-    <li>Dürüstlüyün</li>
-    <li>Əhatəndəki müsbət enerjin</li>
-    <li>Zərif davranışların</li>
-    <li>İşıq saçan təbəssümün</li>
-    <li>Ziddiyyətlərindəki gözəllik</li>
-    <li>Əvəzolunmaz dəyərlərin</li>
-    <li>Məna dolu düşəcən</li>
-    <li>Hörmətin</li>
-    <li>Mizah anlayışın</li>
-    <li>Yaxşılığın</li>
-    <li>Sadəlövhlüyün</li>
-    <li>Şəfqətin</li>
-    <li>Qoxun</li>
-    <li>Həssaslığın</li>
-    <li>Zəkan</li>
-    <li>Qətiyyətin</li>
-    <li>Yaraların</li>
-    <li>Əxlaqın</li>
-    <li>Səsin</li>
-    <li>Cazibən</li>
-    <li>Enerjin</li>
-    <li>Yuxuların</li>
-    <li>Səxavətin</li>
-    <li>Motivasiyaların</li>
-    <li>Yetkinliyin</li>
-    <li>Səmimiyyətin</li>
-    <li>Tərzin</li>
-    <li>Dırnaqların</li>
-    <li>Səbirli olmağın</li>
-    <li>Sadəliyə baxışın</li>
-    <li>Otoritetin</li>
-    <li>Maraqlı olmağın</li>
-    <li>Fədakarlığın</li>
-    <li>Həyat sevincin</li>
-    <li>Mənəvi dəstəyin</li>
-    <li>Ciddiyyətin</li>
-    <li>Saç qoxun</li>
-    <li>Sevgin</li>
-    <li>Qoruyucu olmağın</li>
-    <li>Bənzərsiz xasiyyətin</li>
-    <li>Güclü xarakterin</li>
-    <li>Özünə inamın</li>
-    <li>Kəskin zəkân</li>
-    <li>Məqsədlərin</li>
-    <li>Təşkilatçılıq bacarığın</li>
-    <li>İnanclı olmağın</li>
-    <li>Məni xoşbəxt etmə bacarığın</li>
-    <li>Yaxşı niyyətin</li>
-    <li>Zərif davranışların</li>
-    <li>Bağışlama qabiliyyətin</li>
-    <li>Xoş rəftarın</li>
-    <li>Məni həyatı sevməyi öyrətməyin</li>
-    <li>Heyvanlara sevgin</li>
-    <li>Etibar verən baxışların</li>
-    <li>Qüsurların</li>
-    <li>Məni başa düşməyin</li>
-    <li>Hüzur verən səsin</li>
-    <li>Anlayışlı olmağın</li>
-    <li>Təbii gözəlliyin</li>
-    <li>Acı dolu sözlərin</li>
-    <li>Ətrafındakılara rəftarın</li>
-    <li>Uşaqları sevməyin</li>
-    <li>Detallara qarşı sevgin</li>
-    <li>Sənlə olan anlarım</li>
-    <li>Müsbət münasibətin</li>
-    <li>Açıqsözlülüyün</li>
-    <li>Həvəsin</li>
-    <li>Cəsarətin</li>
-    <li>Hər anın dəyərini bilməyin</li>
-    <li>Masumiyyətin</li>
-    <li>Optimistliyin</li>
-    <li>Ailənlə olan bağların</li>
-    <li>Uşaq kimi olmağın</li>
-    <li>Oyunsevərliyin</li>
-    <li>Gələcəyə baxış bucağın</li>
-    <li>Təbii olmağın</li>
-    <li>İsti davranışların</li>
-    <li>Qayğıkeş olmağın</li>
-    <li>Səbirli olmağı bilməyin</li>
-    <li>Gözəl məsləhətlərin</li>
-    <li>Emosional zəkân</li>
-    <li>Problemlərin</li>
-    <li>Yaradıcılığın</li>
-    <li>Dəngəli olmağın</li>
-    <li>Məni motivasiya etməyin</li>
-    <li>Həyata pozitiv baxışın</li>
-    <li>Özünə olan inamın</li>
-    <li>Məni başa düşməyin uğuru</li>
-    <li>Məntiqli yanaşmağın</li>
-    <li>Heyvanlarla olan sevgin</li>
-    <li>İlham verən şəxsiyyətin</li>
-    <li>Bağışlayıcı ruhun</li>
-    <li>Məni sakitləşdirmə gücün</li>
-    <li>Cazibədarlığın</li>
-    <li>Enerji dolu olmağın</li>
-    <li>Dostyana davranışların</li>
-    <li>Daxili səmimiyyətin</li>
-    <li>Açıqfikirli olmağın</li>
-    <li>Yeni şeylər öyrənmək istəyin</li>
-    <li>Sadəliyin</li>
-    <li>Utancaq davranışların</li>
-    <li>Fərqli baxışların</li>
-    <li>Qoruma arzun</li>
-    <li>Həyat tərzin</li>
-    <li>Məni şənləndirmə bacarığın</li>
-    <li>Ürəyinin təmizliyi</li>
-    <li>Məni dinləmə tərzin</li>
-    <li>Problemləri həll etmə ustalığın</li>
-    <li>İnadkarlığın</li>
-    <li>Dostluğun</li>
-    <li>Yaradıcılıq ideyaların</li>
-    <li>Ağıllı düşüncələrin</li>
-    <li>Məntiqli fikirlərin</li>
-    <li>Sənə məxsus xüsusiyyətlərin</li>
-    <li>Məsuliyyət hissin</li>
-    <li>Paylaşmaq arzun</li>
-    <li>Məni təsəlli etmə bacarığın</li>
-    <li>Sadəlikdəki zərifliyin</li>
-    <li>Fədakarlıqların</li>
-    <li>Məni həmişə dəstəkləməyin</li>
-    <li>Həyat enerjin</li>
-    <li>Təvazökarlığın</li>
-    <li>Məni olduğum kimi qəbul etməyin</li>
-    <li>Qırılqan olmağın</li>
-    <li>Gülüşünün istiliyi</li>
-    <li>Öz ayaqlarının üstündə dayanmağın</li>
-    <li>Həmişə yanımda olmağın</li>
-    <li>Həyata baxış bucağın</li>
-    <li>Çətinliklərə qarşı dayanıqlılığın</li>
-    <li>Xoşbəxt etmə arzun</li>
-    <li>Kiçik şeylərdə xoşbəxtlik tapmağın</li>
-    <li>Axıcı danışmağın</li>
-    <li>Mənə olan inamın</li>
-    <li>İçindəki uşağı itirməməyin</li>
-    <li>Yardımsevərliyin</li>
-    <li>Məni təəccübləndirmə bacarığın</li>
-    <li>Zəka dolu baxışların</li>
-    <li>Özünə məxsus zarafat hissin</li>
-    <li>Yaradıcılıq fikirlərin</li>
-    <li>Gözəl düşüncələrin</li>
-    <li>Mənə qatdığın gözəlliklər</li>
-    <li>Daxilindəki işıq</li>
-    <li>Məni həyata bağlamağın</li>
-    <li>Səni sən edən xüsusiyyətlərin</li>
-    <li>Mənə olan sevgin</li>
-    <li>Məni həmişə xoşbəxt etməyin</li>
-    <li>Qorxmadan sevməyin</li>
-    <li>Məni düşündüyün anlar</li>
-    <li>Sonsuz səbrin</li>
-    <li>Düşüncələrinin mənə güc verməsi</li>
-    <li>Ürəyindəki dərinlik</li>
-    <li>Həyatın dadını çıxarman</li>
-    <li>Duruşundakı güc</li>
-    <li>Məqsədlərin üçün çabaların</li>
-    <li>Çətin vəziyyətlərdə sakitliyin</li>
-    <li>Həmişə yanımda olmağın</li>
-    <li>Özünə inamın</li>
-    <li>Xəyalların</li>
-    <li>Məni tamamlaman</li>
-    <li>Öz gözəlliyini görməyin</li>
-    <li>Məni başa düşməyin</li>
-    <li>Birlikdə güldüyümüz anlar</li>
-    <li>Varlığınla hər şeyi daha mənalı etməyin</li>
-    <li>Mənlə olan vaxtların</li>
-    <li>İnciməklərin</li>
-    <li>Məni yaxşılaşdırmağın</li>
-    <li>Mənim üçün etdiyin kiçik anlar</li>
-    <li>Sonsuz sevgin</li>
-    <li>Həyatıma qatdığın dəyərlər</li>
-    <li>Həyatımdakı yerin</li>
-    <li>Həyat dolu gülüşlərin</li>
-    <li>Sakit davranışların</li>
-    <li>Çətinliklərə qarşı dözümlülüyün</li>
-    <li>Məni hər zaman önəmsəməyin</li>
-    <li>Məni güclü hiss etdirməyin</li>
-    <li>Hər şeydən öncə sevgin</li>
-    <li>Məni nə qədər önəmsədiyin</li>
-    <li>Həyata olan tutqunluğun</li>
-    <li>İçindəki gözəllik</li>
-    <li>Bənzərsiz olmağın</li>
-    <li>Məni gözəlliyə inandırmağın</li>
-    <li>Dərin mənalı baxışların</li>
-    <li>İlham dolu sözlərin</li>
-    <li>Məni necə dinləməyin</li>
-    <li>Öz işığınla parlaman</li>
-    <li>Məni cəsarətləndirməyin</li>
-    <li>Qırılqanlıqlarının gözəlliyi</li>
-    <li>Həmişə həqiqəti söyləməyin</li>
-    <li>Həyatına olan bağlılığın</li>
-    <li>Həyat dolu olmağın</li>
-    <li>Məni güvəndə hiss etdirməyin</li>
-    <li>Həmişə yanımda olmağın</li>
-    <li>Dözümlülüyün</li>
-    <li>Hər şeyinlə mükəmməl olmağın</li>
-    <li>Məni səhvlərimlə sevməyin</li>
-    <li>Dərin hisslərin</li>
-    <li>Sən! </li>
-  </ol>
-<div class="share-buttons-container">
-        <button onclick="shareSite()">💌 Saytı Paylaş</button>
-        <button class="whatsapp-share" onclick="shareWhatsApp()">💬 WhatsApp</button>
-        <button class="twitter-share" onclick="shareTwitter()">🐦 Twitter</button>
-    </div>
-  <script src="script.js"></script>
+<div class="bg-gradient"></div>
 
-  <footer>
-    <p>&copy; 2025 - 2026 Ali Production 💖 |
-    <a href="https://ericismyhero.github.io/my-portfolio/">Əlaqə</a> |
-    <a href="mailto:ericismyhero2467@gmail.com">Təklif və İradlarınız üçün</a> </p>
-  </footer>
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-blur"></div>
+  <div id="hearts-bg"></div>
+  <div class="intro-content">
+    <p class="intro-subtitle">Sənə həsr olunub</p>
+    <h1 class="intro-title">Səni <span>sevməyimin</span><br>səbəbləri</h1>
+    <p class="intro-tagline">200 səbəb · Sonsuz məhəbbət</p>
+    <button class="btn-start" id="startBtn">Başla ✦</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-heart">💖</div>
+    <div class="modal-num" id="modalNum"></div>
+    <div class="modal-text" id="modalText"></div>
+    <div class="modal-share">
+      <button onclick="shareWhatsApp()">WhatsApp 💬</button>
+      <button onclick="copyLink()">Linki kopyala 🔗</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <header>
+    <div class="header-inner">
+      <span class="site-title">💖 200 Səbəb</span>
+      <div class="progress-wrap">
+        <div class="progress-label">Baxılan səbəblər</div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <div class="counter" id="counter">0 / 200</div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="🔍  Səbəb axtar..." oninput="filterCards()">
+    <button class="ctrl-btn" id="randomBtn" onclick="showRandom()">🎲 Random</button>
+    <button class="ctrl-btn" id="musicBtn" onclick="toggleMusic()">🎵 Musiqi</button>
+  </div>
+
+  <div class="fun-section">
+    <span class="love-question">Məni də sevirsən?</span>
+    <button id="yesBtn" onclick="onYes()">Bəli 💕</button>
+    <span class="btn-no-wrap"><button id="noBtn" onmouseenter="runAway()" onclick="runAway()">Xeyr 😐</button></span>
+  </div>
+
+  <div class="grid" id="cardsGrid"></div>
+
+  <div class="share-bar">
+    <button class="ctrl-btn" onclick="shareSite()">📤 Saytı Paylaş</button>
+    <button class="ctrl-btn" onclick="shareWhatsApp()">WhatsApp</button>
+    <button class="ctrl-btn" onclick="copyLink()">🔗 Link Kopyala</button>
+  </div>
+</div>
+
+<!-- Musiqi üçün öz audio faylını əlavə et: -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const reasons = [
+  "Yumşaqlığın", "Baxışların", "Saçların", "Dürüstlüyün", "Əhatəndəki müsbət enerjin", "Zərif davranışların", "İşıq saçan təbəssümün", "Ziddiyyətlərindəki gözəllik", "Əvəzolunmaz dəyərlərin", "Məna dolu düşəcən"
+"Hörmətin", "Mizah anlayışın", "Yaxşılığın", "Sadəlövhlüyün", "Şəfqətin", "Qoxun", "Həssaslığın", "Zəkan", "Qətiyyətin", "Yaraların"
+"Əxlaqın", "Səsin", "Cazibən", "Enerjin", "Yuxuların", "Səxavətin", "Motivasiyaların", "Yetkinliyin", "Səmimiyyətin", "Tərzin"
+"Dırnaqların", "Səbirli olmağın", "Sadəliyə baxışın", "Otoritetin", "Maraqlı olmağın", "Fədakarlığın", "Həyat sevincin", "Mənəvi dəstəyin", "Ciddiyyətin", "Saç qoxun"
+"Sevgin", "Qoruyucu olmağın", "Bənzərsiz xasiyyətin", "Güclü xarakterin", "Özünə inamın", "Kəskin zəkân", "Məqsədlərin", "Təşkilatçılıq bacarığın", "İnanclı olmağın", "Məni xoşbəxt etmə bacarığın"
+"Yaxşı niyyətin", "Zərif davranışların", "Bağışlama qabiliyyətin", "Xoş rəftarın", "Məni həyatı sevməyi öyrətməyin", "Heyvanlara sevgin", "Etibar verən baxışların", "Qüsurların", "Məni başa düşməyin", "Hüzur verən səsin"
+"Anlayışlı olmağın", "Təbii gözəlliyin", "Acı dolu sözlərin", "Ətrafındakılara rəftarın", "Uşaqları sevməyin", "Detallara qarşı sevgin", "Sənlə olan anlarım", "Müsbət münasibətin", "Açıqsözlülüyün", "Həvəsin"
+"Cəsarətin", "Hər anın dəyərini bilməyin", "Masumiyyətin", "Optimistliyin", "Ailənlə olan bağların", "Uşaq kimi olmağın", "Oyunsevərliyin", "Gələcəyə baxış bucağın", "Təbii olmağın", "İsti davranışların"
+"Qayğıkeş olmağın", "Səbirli olmağı bilməyin", "Gözəl məsləhətlərin", "Emosional zəkân", "Problemlərin", "Yaradıcılığın", "Dəngəli olmağın", "Məni motivasiya etməyin", "Həyata pozitiv baxışın", "Özünə olan inamın"
+"Məni başa düşməyin uğuru", "Məntiqli yanaşmağın", "Heyvanlarla olan sevgin", "İlham verən şəxsiyyətin", "Bağışlayıcı ruhun", "Məni sakitləşdirmə gücün", "Cazibədarlığın", "Enerji dolu olmağın", "Dostyana davranışların", "Daxili səmimiyyətin"
+"Açıqfikirli olmağın", "Yeni şeylər öyrənmək istəyin", "Sadəliyin", "Utancaq davranışların", "Fərqli baxışların", "Qoruma arzun", "Həyat tərzin", "Məni şənləndirmə bacarığın", "Ürəyinin təmizliyi", "Məni dinləmə tərzin"
+"Problemləri həll etmə ustalığın", "İnadkarlığın", "Dostluğun", "Yaradıcılıq ideyaların", "Ağıllı düşüncələrin", "Məntiqli fikirlərin", "Sənə məxsus xüsusiyyətlərin", "Məsuliyyət hissin", "Paylaşmaq arzun", "Məni təsəlli etmə bacarığın"
+"Sadəlikdəki zərifliyin", "Fədakarlıqların", "Məni həmişə dəstəkləməyin", "Həyat enerjin", "Təvazökarlığın", "Məni olduğum kimi qəbul etməyin", "Qırılqan olmağın", "Gülüşünün istiliyi", "Öz ayaqlarının üstündə dayanmağın", "Həmişə yanımda olmağın"
+"Həyata baxış bucağın", "Çətinliklərə qarşı dayanıqlılığın", "Xoşbəxt etmə arzun", "Kiçik şeylərdə xoşbəxtlik tapmağın", "Axıcı danışmağın", "Mənə olan inamın", "İçindəki uşağı itirməməyin", "Yardımsevərliyin", "Məni təəccübləndirmə bacarığın", "Zəka dolu baxışların"
+"Özünə məxsus zarafat hissin", "Yaradıcılıq fikirlərin", "Gözəl düşüncələrin", "Mənə qatdığın gözəlliklər", "Daxilindəki işıq", "Məni həyata bağlamağın", "Səni sən edən xüsusiyyətlərin", "Mənə olan sevgin", "Məni həmişə xoşbəxt etməyin", "Qorxmadan sevməyin"
+"Məni düşündüyün anlar", "Sonsuz səbrin", "Düşüncələrinin mənə güc verməsi", "Ürəyindəki dərinlik", "Həyatın dadını çıxarman", "Duruşundakı güc", "Məqsədlərin üçün çabaların", "Çətin vəziyyətlərdə sakitliyin", "Həmişə yanımda olmağın", "Özünə inamın"
+"Xəyalların", "Məni tamamlaman", "Öz gözəlliyini görməyin", "Məni başa düşməyin", "Birlikdə güldüyümüz anlar", "Varlığınla hər şeyi daha mənalı etməyin", "Mənlə olan vaxtların", "İnciməklərin", "Məni yaxşılaşdırmağın", "Mənim üçün etdiyin kiçik anlar"
+"Sonsuz sevgin", "Həyatıma qatdığın dəyərlər", "Həyatımdakı yerin", "Həyat dolu gülüşlərin", "Sakit davranışların", "Çətinliklərə qarşı dözümlülüyün", "Məni hər zaman önəmsəməyin", "Məni güclü hiss etdirməyin", "Hər şeydən öncə sevgin", "Məni nə qədər önəmsədiyin"
+"Həyata olan tutqunluğun", "İçindəki gözəllik", "Bənzərsiz olmağın", "Məni gözəlliyə inandırmağın", "Dərin mənalı baxışların", "İlham dolu sözlərin", "Məni necə dinləməyin", "Öz işığınla parlaman", "Məni cəsarətləndirməyin", "Qırılqanlıqlarının gözəlliyi"
+"Həmişə həqiqəti söyləməyin", "Həyatına olan bağlılığın", "Həyat dolu olmağın", "Məni güvəndə hiss etdirməyin", "Həmişə yanımda olmağın", "Dözümlülüyün", "Hər şeyinlə mükəmməl olmağın", "Məni səhvlərimlə sevməyin", "Dərin hisslərin", "Sadəcə sənsən. Sadəcə Sən!"
+];
+
+const hearts = ["🌸","🎀","🩷","😻","💝","💖","✨","🌷"];
+let viewed = new Set();
+let musicPlaying = false;
+let noBtnMoves = 0;
+
+function buildIntroHearts(){
+  const c = document.getElementById('hearts-bg');
+  for(let i=0;i<18;i++){
+    const d = document.createElement('div');
+    d.className='floating-heart';
+    d.textContent=hearts[i%hearts.length];
+    d.style.left=Math.random()*95+'vw';
+    d.style.animationDelay=Math.random()*8+'s';
+    d.style.animationDuration=(6+Math.random()*6)+'s';
+    d.style.fontSize=(1+Math.random())+'rem';
+    c.appendChild(d);
+  }
+}
+
+function buildCards(){
+  const grid = document.getElementById('cardsGrid');
+  const total = reasons.length;
+  reasons.forEach((r,i)=>{
+    const card = document.createElement('div');
+    card.className='reason-card'+(i===total-1?' last-card':'');
+    card.dataset.index=i;
+    if(i===total-1){
+      card.innerHTML=`<div class="card-num">Səbəb ${i+1} ✦</div>
+        <div class="card-text">${r}</div>
+        <div class="ending-note">Əslində səbəblər bitmir... 💖</div>`;
+    } else {
+      card.innerHTML=`<div class="card-num">Səbəb ${i+1}</div>
+        <div class="card-text">${r}</div>
+        <div class="card-icon">${hearts[i%hearts.length]}</div>`;
+    }
+    card.addEventListener('click',()=>openModal(i));
+    grid.appendChild(card);
+  });
+}
+
+function observeCards(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const card=e.target;
+        card.classList.add('visible');
+        const idx=parseInt(card.dataset.index);
+        if(!isNaN(idx)){viewed.add(idx);updateProgress();}
+      }
+    });
+  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reason-card').forEach(c=>io.observe(c));
+}
+
+function updateProgress(){
+  const pct=Math.min(100,(viewed.size/reasons.length)*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('counter').textContent=viewed.size+' / '+reasons.length;
+}
+
+function openModal(idx){
+  document.getElementById('modalNum').textContent='Səbəb '+(idx+1)+' / '+reasons.length;
+  document.getElementById('modalText').textContent=reasons[idx];
+  document.getElementById('modal').classList.add('open');
+  viewed.add(idx);updateProgress();
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+}
+
+document.getElementById('modalClose').onclick=closeModal;
+document.getElementById('modal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('modal'))closeModal();
+});
+
+function showRandom(){
+  openModal(Math.floor(Math.random()*reasons.length));
+}
+
+function filterCards(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.reason-card').forEach(c=>{
+    const txt=c.querySelector('.card-text').textContent.toLowerCase();
+    c.classList.toggle('search-hidden',q.length>0&&!txt.includes(q));
+  });
+}
+
+function toggleMusic(){
+  const aud=document.getElementById('bgMusic');
+  const btn=document.getElementById('musicBtn');
+  if(musicPlaying){aud.pause();btn.textContent='🎵 Musiqi';btn.classList.remove('music-on');}
+  else{aud.volume=0.25;aud.play().catch(()=>{});btn.textContent='🔇 Dur';btn.classList.add('music-on');}
+  musicPlaying=!musicPlaying;
+}
+
+function shareWhatsApp(){
+  const txt='Səni Sevməyimin 200 Səbəbi 💖. Bax bu sənə həsr olunub 🥺💘. Link: '+window.location.href;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+}
+function shareSite(){
+  if(navigator.share){
+    navigator.share({title:'Səni Sevməyimin 200 Səbəbi 💖',text:'Bax bu sənə həsr olunub 🥺💘',url:window.location.href});
+  } else {copyLink();}
+}
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href)
+    .then(()=>{alert('✅ Link kopyalandı!');})
+    .catch(()=>prompt('Linki kopyala:',window.location.href));
+}
+
+function onYes(){
+  const btn=document.getElementById('yesBtn');
+  btn.textContent='💕 Bilirdim ♡';
+  btn.style.background='#880e4f';
+  setTimeout(()=>{btn.textContent='Bəli 💕';btn.style.background='';},2500);
+}
+
+function runAway(){
+  const btn=document.getElementById('noBtn');
+  noBtnMoves++;
+  const x=(Math.random()-.5)*400;
+  const y=(Math.random()-.5)*300;
+  btn.style.transform=`translate(${x}px,${y}px)`;
+  btn.style.transition='transform .3s cubic-bezier(.34,1.56,.64,1)';
+  if(noBtnMoves>5){btn.style.opacity='0';setTimeout(()=>{btn.style.opacity='1';btn.style.transform='';noBtnMoves=0;},1500);}
+}
+
+document.getElementById('startBtn').addEventListener('click',()=>{
+  const intro=document.getElementById('intro');
+  const main=document.getElementById('main');
+  intro.classList.add('hide');
+  setTimeout(()=>{intro.style.display='none';main.classList.add('visible');},800);
+});
+
+buildIntroHearts();
+buildCards();
+setTimeout(observeCards,100);
+</script>
 </body>
 </html>
